@@ -7,3 +7,5 @@
 This repository tracks the development of the Foil Contrast Index (FCI) and the theoretical foundations behind the Foils startup project. The goal is to bridge philosophical insight with algorithmic implementation — from theory to code.
 
 > All original content © 2025 [Mick Parker] – All Rights Reserved.
+
+© 2025 [Mick Parker]. All rights reserved. This content is protected by copyright and must not be used without permission.
