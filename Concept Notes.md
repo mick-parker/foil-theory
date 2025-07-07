@@ -74,13 +74,8 @@ GFCI quantifies this contrast, showing explicit dependence on foils rather than 
 
 Supporting Evidence:
 Summary: Conceptual membership defined primarily by contrast with foils, not by distance to a prototype.
-Equation:
-GFCI(p,f)=∥p−f∥∥p∥+∥f∥GFCI(p,f)=∥p∥+∥f∥∥p−f∥​ 
-Code Snippet:
-def gfci(p, F):
-    dists = np.linalg.norm(F - p, axis=1)
-    closest_f = F[np.argmin(dists)]
-    return np.linalg.norm(p - closest_f) / (np.linalg.norm(p) + np.linalg.norm(closest_f) + 1e-8)
+Equation: GFCI(p,f)=∥p−f∥∥p∥+∥f∥GFCI(p,f)=∥p∥+∥f∥∥p−f∥​ 
+Code Snippet: def gfci(p, F): dists = np.linalg.norm(F - p, axis=1), closest_f = F[np.argmin(dists)] return np.linalg.norm(p - closest_f) / (np.linalg.norm(p) + np.linalg.norm(closest_f) + 1e-8)
 
 import numpy as np
 
@@ -115,7 +110,7 @@ plt.show()
 
 3 Boundary Detection in Early Concept Formation as a Parsing Problem 
 Concept Note
-Before we can categorise, we must parse: break the world into discrete chunks. 'Boundary as Parsing Problem' argues that parsing is the first cognitive act - more fundamental than similarity or contrast. Think of how an infant must segment continuous visual and auditory streams before recognising objects or words. Parsing shapes what counts as an 'entity' at all. This view connects to computational parsing in AI and the perceptual segmentation seen in developmental psychology. Philosophically, it suggests concepts depend on pre-conceptual operations, challenging essentialist or purely representational accounts.
+Before we can categorise, we must parse: break the world into discrete chunks. 'Boundary Detection in Early Concept Formation as Parsing Problem' argues that parsing is the first cognitive act - more fundamental than similarity or contrast. Think of how an infant must segment continuous visual and auditory streams before recognising objects or words. Parsing shapes what counts as an 'entity' at all. This view connects to computational parsing in AI and the perceptual segmentation seen in developmental psychology. Philosophically, it suggests concepts depend on pre-conceptual operations, challenging essentialist or purely representational accounts.
 
 Premises:
 P1. Continuous sensory input must be parsed into units before categorisation.
@@ -133,8 +128,7 @@ Parsing here is based on contrast, not on gradual similarity.
 Supporting Evidence:
 Summary: Boundaries derived from contrast parsing precede categorisation.
 Equation: Parse region: {p:GFCI(p,F)>τ}{p:GFCI(p,F)>τ}
-Code Snippet:
-axs[0].contour(X, Y, P_mask, levels=[0.5], colors='white', linewidths=2, linestyles='--')
+Code Snippet: axs[0].contour(X, Y, P_mask, levels=[0.5], colors='white', linewidths=2, linestyles='--')
 
 import numpy as np
 
@@ -166,7 +160,7 @@ plt.show()
 
 4 Boundary Detection as a Pre-requisite of Individuation 
 Concept Note
-Once parsed, we must determine individuation: what counts as a single object or entity. For example, is a flock of birds one thing or many? 'Boundary Detection as Individuation' extends the parsing thesis, arguing that individuation is a second-order act dependent on parsing boundaries. This thesis highlights cultural variation (cognitive anthropology) in how different societies individuate objects and events. In AI, this resembles object tracking and segmentation. For developmental psychology, it explains differences in object permanence and individuation tasks. Philosophically, it challenges assumptions about objective 'individuals' in metaphysics.
+Once parsed, we must determine individuation: what counts as a single object or entity. For example, is a flock of birds one thing or many? 'Boundary Detection as a Pre-requisite of Individuation' extends the parsing thesis, arguing that individuation is a second-order act dependent on parsing boundaries. This thesis highlights cultural variation (cognitive anthropology) in how different societies individuate objects and events. In AI, this resembles object tracking and segmentation. For developmental psychology, it explains differences in object permanence and individuation tasks. Philosophically, it challenges assumptions about objective 'individuals' in metaphysics.
 
 Premises:
 P1. Parsed segments require decisions about individuation.
@@ -177,15 +171,13 @@ Conclusion:
 C1. Individuation emerges as a contingent, system-dependent act following boundary parsing, reframing what counts as an 'individual' or 'object.'
 
 Annotation:
-Boundaries from GFCI parsing delineate discrete 'objects' or regions (formalism).
+Boundaries from GFCI parsing delineate discrete 'objects' or regions.
 Heatmap contours show individuation explicitly: set P is well-separated.
 Foil-driven parsing implies individuation precedes any abstract set membership.
 
 Supporting Evidence:
-Summary: Parsing by contrast individuates distinct "objects" or set members.
-Equation: Boundary formally given by:
-∂P=P‾∩X∖P‾∂P=P∩X∖P​ 
-but here replaced by explicit contrast-driven region.
+Summary: Parsing by contrast individuates distinct ‘objects’ or set members.
+Equation: Boundary formally given by: ∂P=P‾∩X∖P‾∂P=P∩X∖P​ but here replaced by an explicit contrast-driven region.
 
 import numpy as np
 
@@ -199,7 +191,7 @@ def individuate(p, F, tau=1.0):
 for p in P:
     print("Individuated?", individuate(p, F))
 
-Heatmap Reference: The dashed GFCI contour indicates individuated set PP.
+Heatmap Reference: The dashed GFCI contour indicates individuated set P.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -238,9 +230,7 @@ Supports the thesis that FCI variants create a cluster of definable, empirical m
 
 Supporting Evidence:
 Summary: GFCI represents one member of a family of formal contrast indices (FCI variants).
-Equation: Generalised FCI form:
-FCI(p,f)=Δ(p,f)N(p,f)FCI(p,f)=N(p,f)Δ(p,f)​ 
-with ΔΔ and NN chosen appropriately (e.g., Euclidean norm in GFCI).
+Equation: Generalised FCI form: FCI(p,f)=Δ(p,f)N(p,f)FCI(p,f)=N(p,f)Δ(p,f)​ with ΔΔ and NN chosen appropriately (e.g., Euclidean norm in GFCI).
 Code Snippet: Same as GFCI function above.
 
 import numpy as np
@@ -395,8 +385,7 @@ Shows that parsing and contrast are not separable but jointly implemented.
 
 Supporting Evidence:
 Summary: Parsing and contrast are implemented together via GFCI thresholding.
-Equation:
-{p:GFCI(p,F)>τ}{p:GFCI(p,F)>τ} 
+Equation: {p:GFCI(p,F)>τ}{p:GFCI(p,F)>τ} 
 Code Snippet: P_mask = Z_gfci > gfci_threshold
 
 import numpy as np
@@ -447,7 +436,7 @@ Movement or change of foils would dynamically reshape conceptual regions.
 
 Supporting Evidence:
 Summary: Moving foils dynamically updates patch regions.
-Visual Pointer: Suggested Part III animation direction.
+Visual Pointer: Suggested animation direction.
 Code Snippet (conceptual): F = np.array([[-2, -1], [2 + delta_x, 1.5 + delta_y]])
 
 scrapbook = []
@@ -501,7 +490,7 @@ GFCI as a metric-based parsing mechanism supports emergence of parse-stable univ
 
 Supporting Evidence:
 Summary: Universals emerge from stable parsing boundaries across contexts.
-Equation: Stability of {p:GFCI(p,F)>τ}{p:GFCI(p,F)>τ} across variations in FF.
+Equation: Stability of {p:GFCI(p,F)>τ}{p:GFCI(p,F)>τ} across variations in F.
 
 import numpy as np
 
@@ -579,7 +568,7 @@ plt.show()
 
 12 Conceptual Economy 
 Concept Note
-All ontological and conceptual structures, this thesis argues, reflect a principle of economy: minimal parsing, minimal contrasts, and minimal cognitive cost. Rather than maximising feature representation, systems prioritise simplicity and efficiency. This explains why categories are often fuzzy and why exceptions are tolerated. It aligns with cognitive minimalism, Occam’s Razor, and satisfying. For AI, it suggests optimisation principles beyond accuracy alone. Philosophically, it offers a unifying meta-principle for conceptual engineering.
+All ontological and conceptual structures, this thesis argues, reflect a principle of economy: minimal parsing, minimal contrasts, and minimal cognitive cost. Rather than maximising feature representation, systems prioritise simplicity and efficiency. This explains why categories are often fuzzy and why exceptions are tolerated. It aligns with cognitive minimalism, Ockham’s Razor, and satisfying [?satisficing (e.g., optimisation)]. For AI, it suggests optimisation principles beyond accuracy alone. Philosophically, it offers a unifying meta-principle for conceptual engineering.
 
 Premises:
 P1. Cognitive and ontological structures are resource-constrained.
@@ -644,7 +633,7 @@ Demonstrates full contrastive, patch-based epistemology with empirical, geometri
 
 Supporting Evidence:
 Summary: Integration of contrast as primitive, parsing-first logic, and empirical support.
-Visual Pointer: Combined reading of Part III heatmaps - left plot (GFCI) vs right plot (similarity).
+Visual Pointer: Heatmaps - left plot (GFCI) vs right plot (similarity).
 Key Code Snippet: fig, axs = plt.subplots(1, 2, figsize=(14, 6))
 
 import numpy as np
